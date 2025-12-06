@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Acts of Improvement – A Chess Data Story</title>
+
+  <!-- Plotly for charts -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+  <!-- Styles + main JS -->
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+
+<body>
+  <!-- Top nav -->
+  <nav class="top-nav">
+    <div class="brand">Three Acts of Improvement</div>
+    <div class="nav-links">
+      <a href="#act1">Act 1</a>
+      <a href="#act2">Act 2</a>
+      <a href="#act3">Act 3</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-text">
+      <div class="tag">Chess · Data · Learning Curves</div>
+      <h1>How Fast Improvers Break Away</h1>
+      <p>
+        Using online games from Lichess, I followed two groups of players:
+        people who rocket from ~500 to ~900, and people who get stuck.
+        This is a three-act story about patterns, preparation, and adaptability.
+      </p>
+    </div>
+  </header>
+
+  <!-- ACT 1 -->
+  <section id="act1" class="act">
+    <div class="act-header">
+      <div class="tag">Act 1</div>
+      <h2>Opening Scene: The First 30 Games</h2>
+      <p>
+        We start with the very beginning: the first 30 games of 20 players –
+        10 fast improvers and 10 plateau players. How chaotic are their results?
+        How many wins do they actually stack up, and how often do they beat
+        stronger opponents?
+      </p>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card wide">
+        <h3>1. A Season-Style Map of Every Result</h3>
+        <p class="chart-caption">
+          Each row is a player, each column is a game. Blue = win, red = loss,
+          green = draw. Fast improvers are on top, plateau players below.
+        </p>
+        <div id="act1-heatmap" class="chart"></div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <h3>2. Total Wins in the First 30 Games</h3>
+        <p class="chart-caption">
+          Among the same 10 fast and 10 plateau players, how many wins do they
+          collect in this opening stretch?
+        </p>
+        <div id="act1-total-wins" class="chart small"></div>
+      </div>
+
+      <div class="chart-card">
+        <h3>3. Upset Wins vs Higher-Rated Opponents</h3>
+        <p class="chart-caption">
+          Now we only count wins against higher-rated opponents – the “punching
+          above your weight” games.
+        </p>
+        <div id="act1-upset-wins" class="chart small"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACT 2 -->
+  <section id="act2" class="act">
+    <div class="act-header">
+      <div class="tag">Act 2</div>
+      <h2>Middle Game: Where Do They Actually Win?</h2>
+      <p>
+        Next we move inside the games themselves. Are fast improvers just good at
+        quick opening traps, or do they carry an edge through the middlegame and
+        endgame too? And how much opening theory are they successfully navigating?
+      </p>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <h3>4. Win Rate by Game Phase</h3>
+        <p class="chart-caption">
+          We classify games as short (opening), medium (middlegame), or long (endgame)
+          based on total moves, then compare win rates by group.
+        </p>
+        <div id="act2-phase-heatmap" class="chart"></div>
+      </div>
+
+      <div class="chart-card">
+        <h3>5. Win Rate by Opening Depth</h3>
+        <p class="chart-caption">
+          Grouping openings by how many book moves are played (very shallow to deep),
+          we see how often each group converts those games.
+        </p>
+        <div id="act2-opening-depth" class="chart"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACT 3 -->
+  <section id="act3" class="act">
+    <div class="act-header">
+      <div class="tag">Act 3</div>
+      <h2>Endgame: Off-Book Chaos & Resilience</h2>
+      <p>
+        Finally we look at what happens once players leave preparation and enter chaos –
+        and what happens emotionally after they lose.
+      </p>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <h3>6. Win Rate After Going Off-Book</h3>
+        <p class="chart-caption">
+          For games where we detect an “off-book” move, how often do players still win,
+          depending on whether they diverge early, mid, or late?
+        </p>
+        <div id="act3-offbook-winrate" class="chart"></div>
+      </div>
+
+      <div class="chart-card">
+        <h3>7. Off-Book Upset Rate vs Stronger Opponents</h3>
+        <p class="chart-caption">
+          Restricting to games against higher-rated opponents, this is “creative chaos
+          that actually works”.
+        </p>
+        <div id="act3-offbook-upset" class="chart"></div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-card wide">
+        <h3>8. Bounce-Back Resilience: Win After a Loss</h3>
+        <p class="chart-caption">
+          Among games that come immediately after a loss, what fraction are wins?
+          This is a simple measure of emotional recovery for each group.
+        </p>
+        <div id="act3-bounce-back" class="chart small"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built with Lichess data, Python, Plotly, and many blunders.</p>
+  </footer>
+</body>
+</html>
